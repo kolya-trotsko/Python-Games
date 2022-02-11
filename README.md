@@ -1,4 +1,9 @@
-in my work, students constantly need to do new projects.
-I decided to give them some examples to improve their tasks and to practice Python syntax
-here are already (Tik tak toe) (snake).
-I plan to add a few more simple games in the future
+використані модулі - 
+  from turtle import * 
+
+Description: 
+With the help of the turtle module used to visualize the game, the well-known game "Tik tak toe" was created. 
+The result can be collected and viewed. The program can be improved by adding use to the OOP, 
+but since this task is considered by students who have not yet studied PLO, I tried to do without it. 
+You can also improve the appearance of the game itself (add the main menu, add points for passing the game. 
+I also plan to add an opponent and several levels where the opponent will become stronger.)
