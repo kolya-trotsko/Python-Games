@@ -1,0 +1,151 @@
+from turtle import *
+x=3
+run = True
+speed(1000)
+penup()
+goto(-150,-150)
+pendown()
+for i in "1234":
+    forward(300)
+    left(90)
+exitonclick()
+for i in [-50,50,150]:
+    while x!=0:
+        forward(100)
+        left(90)
+        forward(100)
+        left(90)
+        forward(100)
+        left(180)
+        x-=1
+    penup()
+    goto(i,-150)
+    pendown()
+    x=3
+game = ["",
+    None,None,None,
+    None,None,None,
+    None,None,None
+]
+player_1 = "X"
+player_2 = "O"
+
+def win(x1,y1,x2,y2):
+    global run
+    width(8)
+    penup()
+    goto(x1,y1)
+    pendown()
+    goto(x2,y2)
+    width(1)
+    run = False
+
+def winer(XorO):
+    global run
+    if game[1] == XorO and game[2] == XorO and game[3] == XorO:
+        win(-150,100,150,100)
+    elif game[1] == XorO and game[4] == XorO and game[7] == XorO:
+        win(-100,150,-100,-150)
+    elif game[1] == XorO and game[5] == XorO and game[9] == XorO:
+        win(-150,150,150,-150)
+    elif game[2] == XorO and game[5] == XorO and game[8] == XorO:
+        win(0,150,0,-150)
+    elif game[3] == XorO and game[5] == XorO and game[7] == XorO:
+        win(150,150,-150,-150)
+    elif game[4] == XorO and game[5] == XorO and game[6] == XorO:
+        win(-150,0,150,0)
+    elif game[3] == XorO and game[6] == XorO and game[9] == XorO:
+        win(100,150,100,-150)
+    elif game[7] == XorO and game[8] == XorO and game[9] == XorO:
+        win(-150,-100,150,100)
+    if None not in game:
+        print("Нічія!") 
+        run = False
+
+def X(x,y):
+    penup()
+    goto(x,y)
+    pendown()
+    left(45)
+    forward(140)
+    penup()
+    goto(x,y)
+    pendown()
+    forward(70)
+    left(90)
+    forward(70)
+    left(180)
+    forward(140)
+    left(45)
+
+def O(x,y):
+    penup()
+    goto(x,y)
+    pendown()
+    forward(50)
+    circle(50)
+
+while run == True:
+    a = int(input("хід X - "))
+    if game[a] == None:
+        game[a] = "X"
+    else:
+        while game[a] != None:
+            a = int(input("Ця клітинка зайнята. Оберіть іншу - "))
+    game[a] = "X"
+    if a == 1:
+        X(-150,50)
+    elif a == 2:
+        X(-50,50)
+    elif a == 3:
+        X(50,50)
+    elif a == 4:
+        X(-150,-50)
+    elif a == 5:
+        X(-50,-50)
+    elif a == 6:
+        X(50,-50)
+    elif a == 7:
+        X(-150,-150)
+    elif a == 8:
+        X(-50,-150)
+    elif a == 9:
+        X(50,-150)
+    else:
+        print("такої цифри нема. Оберіть цифру від 1 до 9")
+    winer("X")
+    if run == False:
+        print("Виграв Х")
+        break
+
+    a = int(input("хід O - "))
+    if game[a] == None:
+        game[a] = "O"
+    else:
+        while game[a] != None:
+            a = int(input("Ця клітинка зайнята. Оберіть іншу - "))
+    game[a] = "O"
+    if a == 1:
+        O(-150,50)
+    elif a == 2:
+        O(-50,50)
+    elif a == 3:
+        O(50,50)
+    elif a == 4:
+        O(-150,-50)
+    elif a == 5:
+        O(-50,-50)
+    elif a == 6:
+        O(50,-50)
+    elif a == 7:
+        O(-150,-150)
+    elif a == 8:
+        O(-50,-150)
+    elif a == 9:
+        O(50,-150)
+    else:
+        print("такої цифри нема. Оберіть цифру від 1 до 9")
+    winer("O")
+    if run == False:
+        print("Виграв О")
+        break
